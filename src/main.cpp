@@ -43,10 +43,10 @@ void display_input()
 
 void closeCB(Fl_Widget *w, void* p)
 {
-	if (fl_choice("Unsaved file, exit anyway", fl_no, fl_yes, 0) == 1)
-	{
+	//if (fl_choice("Unsaved file, exit anyway", fl_no, fl_yes, 0) == 1)
+	//{
 		win->hide();
-	}
+	//}
 }
 
 void applyTorsoCB(Fl_Widget *w, void* p)

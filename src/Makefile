@@ -38,31 +38,31 @@ LFLAGS = $(shell fltk-config --ldflags) -Wall $(DEBUG)
 # FLTKLIB = -lfltk
 
 executable: $(OBJS)
-	$(CC) $(CXX) $(LFLAGS) $(OBJS) $(LINKFLTK_IMG)
+	$(CC) $(CXX) $(LFLAGS) $(OBJS) $(FLTKLIB) $(LINKFLTK_IMG)
 
-main.o: main.cpp
+main.o: main.cpp robotPart.h order.h 
 	$(CC) $(CXX) $(CXXFLAGS) $(LINKFLTK_IMG) main.cpp
 
-robotPart.o : robotPart.cpp robotPart.h
+robotPart.o : robotPart.cpp robotPart.h std_lib_facilities.h torso.h head.h arm.h locomotor.h battery.h 
 	$(CC) $(CXX) $(CXXFLAGS) $(LINKFLTK_IMG) robotPart.cpp
 
-torso.o : torso.cpp torso.h
+torso.o : torso.cpp torso.h std_lib_facilities.h
 	$(CC) $(CXX) $(CXXFLAGS) torso.cpp
 
-head.o : head.cpp head.h
+head.o : head.cpp head.h std_lib_facilities.h
 	$(CC) $(CXX) $(CXXFLAGS) head.cpp
 
-arm.o : arm.cpp arm.h
+arm.o : arm.cpp arm.h std_lib_facilities.h
 	$(CC) $(CXX) $(CXXFLAGS) arm.cpp
 
-locomotor.o : locomotor.cpp locomotor.h
+locomotor.o : locomotor.cpp locomotor.h std_lib_facilities.h
 	$(CC) $(CXX) $(CXXFLAGS) locomotor.cpp
 
-battery.o : battery.cpp battery.h
+battery.o : battery.cpp battery.h std_lib_facilities.h
 	$(CC) $(CXX) $(CXXFLAGS) battery.cpp
 
-order.o : order.cpp order.h
+order.o : order.cpp order.h robotPart.h 
 	$(CC) $(CXX) $(CXXFLAGS) order.cpp
 
 clean:
-	\rm *.o a.out    
+	rm *.o a.out    
